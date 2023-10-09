@@ -1,7 +1,9 @@
 .card-grid{
-    display:flex;
-    flex-wrap:wrap; 
-   /* grid-template-columns: repeat(2,1fr); */
+    width: 100%;
+    display:grid;
+    /* flex-wrap:wrap;  */
+    grid-template-columns: repeat(3,1fr); 
+    justify-items: center;
     gap:10px;
     padding-bottom: 30px;
 }
