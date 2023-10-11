@@ -10,6 +10,8 @@ import { MovieCardComponent } from './components/movies/movie-card/movie-card.co
 import { MovieCardListComponent } from './components/movies/movie-card-list/movie-card-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { MovieDetailsComponent } from './components/movies/movie-details/movie-d
     MovieCardComponent,
     MovieCardListComponent,
     HomeComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
