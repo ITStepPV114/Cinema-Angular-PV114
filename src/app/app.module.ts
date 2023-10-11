@@ -8,13 +8,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { MovieCardComponent } from './components/movies/movie-card/movie-card.component';
 import { MovieCardListComponent } from './components/movies/movie-card-list/movie-card-list.component';
+import { HomeComponent } from './components/home/home.component';
+import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MovieCardComponent,
-    MovieCardListComponent
+    MovieCardListComponent,
+    HomeComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
