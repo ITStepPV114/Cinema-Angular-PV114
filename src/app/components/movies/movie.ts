@@ -6,7 +6,13 @@ export interface IMovie{
     year:number;
     imageUrl:string;
     description?: string;
-    duration:Time;
+    duration:string;
+    // duration:Time;
     // isCurrent:boolean;
-    genres?:string[];
+    genres?:IGenre[];
+}
+
+export interface IGenre{
+    id:number;
+    name:string;
 }

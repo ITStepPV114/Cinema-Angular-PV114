@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AddMovieComponent } from './components/movies/add-movie/add-movie.compo
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
