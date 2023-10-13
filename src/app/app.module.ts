@@ -28,7 +28,8 @@ import { AddMovieComponent } from './components/movies/add-movie/add-movie.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

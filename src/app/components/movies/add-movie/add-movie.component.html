@@ -1,9 +1,26 @@
-<div class="text-center">
-    <form [formGroup]="movieForm" (ngSubmit)="addMovie()">
+
+
+<div class="text-center" >
+    <!-- example using formControl witout FormGroup -->
+    <!-- <form>
+        <mat-form-field>
+            <mat-label>Find</mat-label>
+            <input matInput type="text" [formControl]="findInfo">
+        </mat-form-field>
+        <div>
+            <button type="button" mat-raised-button color="primary" (click)="printInfo()">Find</button>
+        </div>    
+    </form> -->
+    <!-- <form [formGroup]="movieForm" #f="ngForm" (ngSubmit)="addMovieWithParam(f)"> -->
+    <form [formGroup]="movieForm" #f="ngForm" (ngSubmit)="addMovie()">
+        <div *ngIf="movieForm.get('title')?.invalid &&
+                    (movieForm.get('title')?.dirty || movieForm.get('title')?.touched)">
+            Please enter 3+ symbol for field title
+        </div>
         <div>
             <mat-form-field>
                 <mat-label>Title</mat-label>
-                <input matInput type="text" placeholder="Movie Title" formControlName="title">
+                <input matInput type="text" formControlName="title">
             </mat-form-field>
         </div>
         <div>
@@ -42,7 +59,15 @@
             </mat-form-field>
         </div>
         <div>
-            <button type="submit" mat-raised-button color="primary">Save</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Save</button>
         </div>
     </form>
+
+    <div>
+      <div>   Data of form: {{f.value|json}} </div>
+      <div> IsValid: {{f.valid}} </div>
+      <div> Toched: {{f.touched}} </div>
+      <div> Dirty: {{f.dirty}} </div>
+
+    </div>
 </div>

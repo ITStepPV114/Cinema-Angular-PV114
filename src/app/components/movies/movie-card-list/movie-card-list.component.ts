@@ -9,4 +9,5 @@ import { MOVIES } from '../movies-mock-data';
 })
 export class MovieCardListComponent {
    movies:IMovie[]=MOVIES;
+  //  constructor()
 }
