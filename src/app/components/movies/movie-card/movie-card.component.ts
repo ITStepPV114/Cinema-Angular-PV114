@@ -9,7 +9,7 @@ import { IMovie } from '../movie';
 export class MovieCardComponent implements OnInit{
   
   @Input()
-  movie?:IMovie;
+  movie!:IMovie;
   genres:string[]|undefined=[];
   // ={ 
     //     id: 1,
@@ -21,7 +21,7 @@ export class MovieCardComponent implements OnInit{
   //     genres: ["Drama", "Craim", "Action"]
   //   };
   ngOnInit(): void {
-    this.genres=this.movie?.genres?.map(g=>g.name);
+    this.genres=this.movie.genres?.map(g=>g.name);
   }
   
 }
