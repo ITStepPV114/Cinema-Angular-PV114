@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { IMovie } from '../movie';
+import { ICreateMovieDto, IGenre, IMovie } from '../movie';
 import { MOVIES } from '../movies-mock-data';
+import { MovieService } from '../movie.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-movie',
@@ -9,7 +11,7 @@ import { MOVIES } from '../movies-mock-data';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
-  movies: IMovie[] = MOVIES;
+  // movies: IMovie[] = MOVIES; //fro add new movie to localdata
   findInfo?: FormControl;
   // movieForm:FormGroup=new FormGroup({
   //   title:new FormControl("",[Validators.required,Validators.minLength(3)]),
@@ -19,41 +21,54 @@ export class AddMovieComponent implements OnInit {
   //   duration:new FormControl('01:30'),
   //   genres: new FormControl([])
   // });
-  movieForm: FormGroup;
-  
-  constructor(private fb: FormBuilder) {
-    
+  movieForm!: FormGroup;
+  genres!: IGenre[];
+
+  constructor(private fb: FormBuilder,
+    private movieService: MovieService,
+    private router: Router,
+     private activeRoute: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    // this.findInfo = new FormControl("find");
+    //create form with FormBuilder
+    this.movieService.getGenres().subscribe(res => {
+      console.log(res);
+      this.genres = res;
+    })
+
     this.movieForm = this.fb?.group({
       title: ["", [Validators.required, Validators.minLength(3)]],
       year: [new Date().getFullYear(), Validators.max(new Date().getFullYear())],
       imageUrl: "",
       description: "",
       duration: '01:30',
-      genres: []
+      genreIds: [[]]
     });
-  }
-
-  ngOnInit(): void {
-
-    this.findInfo = new FormControl("find");
-    //create form with FormBuilder
   }
 
 
   addMovie() {
-    let item = this.movieForm.value;
-    item.id = this.movies.length + 1;
+    let item = this.movieForm.value as ICreateMovieDto;
+    item.duration += ":00";
     console.log(item);
-    this.movies.push(item);
-
+    // item.id = this.movies.length + 1;
+    // this.movies.push(item);  //add to local collection
+    this.movieService.create(item).subscribe(res => {
+      console.log("Creating success!!!!!");
+      this.router.navigate(['movies']);
+ 
+    }
+    );
   }
-  addMovieWithParam(formFull: FormGroupDirective) {
-    let item = this.movieForm.value;
-    console.log(item);
-    console.log(formFull.valid);
-    console.log(formFull.value.year);
-    console.log(formFull.value.genres);
-  }
+  // addMovieWithParam(formFull: FormGroupDirective) {
+  //   let item = this.movieForm.value;
+  //   console.log(item);
+  //   console.log(formFull.valid);
+  //   console.log(formFull.value.year);
+  //   console.log(formFull.value.genres);
+  // }
   printInfo() {
     console.log(this.findInfo?.value);
   }

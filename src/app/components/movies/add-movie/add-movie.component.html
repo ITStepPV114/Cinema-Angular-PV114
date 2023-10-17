@@ -45,10 +45,11 @@
         <div>
             <mat-form-field>
                 <mat-label>Gengres</mat-label>
-                <mat-select multiple formControlName="genres">
-                    <mat-option value="History">History</mat-option>
-                    <mat-option value="Action">Action</mat-option>
-                    <mat-option value="Drama">Drama</mat-option>
+                <mat-select multiple formControlName="genreIds">
+                    <mat-option *ngFor="let g of genres" [value]="g.id">{{g.name}}</mat-option>
+                    <!-- <mat-option value="1">History</mat-option>
+                    <mat-option value="2">Action</mat-option>
+                    <mat-option value="3">Drama</mat-option> -->
                 </mat-select>
             </mat-form-field>
         </div>
