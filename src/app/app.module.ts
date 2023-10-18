@@ -12,8 +12,9 @@ import { HomeComponent } from './components/home/home.component';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/account/login/login.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import { LoginComponent } from './components/account/login/login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,4 +20,23 @@ export class AccountService {
       password: data.password
     });
   }
+
+  logout():Observable<any>{
+    return this.http.post(`${this.url}/logout`,null)
+  }
+
+  saveToken(token:string):void{
+    // localStorage["token"]=token;
+    localStorage.setItem("token",token);
+  }
+
+  getToken():string|null{
+    // return localStorage["token"];
+    return localStorage.getItem("token");
+  }
+
+  deleteToken():void{
+    localStorage.removeItem("token");
+  }
+
 }

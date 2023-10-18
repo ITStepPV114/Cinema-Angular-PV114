@@ -26,8 +26,7 @@ export class AddMovieComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private movieService: MovieService,
-    private router: Router,
-     private activeRoute: ActivatedRoute) {
+    private router: Router) {
   }
 
   ngOnInit(): void {

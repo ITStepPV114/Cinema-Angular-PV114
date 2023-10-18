@@ -5,12 +5,14 @@ import { MovieCardComponent } from './components/movies/movie-card/movie-card.co
 import { MovieCardListComponent } from './components/movies/movie-card-list/movie-card-list.component';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
 import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
+import { LoginComponent } from './components/account/login/login.component';
 
 const routes: Routes = [
   {path:"",component: HomeComponent},
   {path:"movies",component: MovieCardListComponent},
   {path:"movie-details/:id", component: MovieDetailsComponent},
-  {path:"add-movie", component: AddMovieComponent}
+  {path:"add-movie", component: AddMovieComponent},
+  {path:"login", component: LoginComponent}
 ];
 
 @NgModule({
