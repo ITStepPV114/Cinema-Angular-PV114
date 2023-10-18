@@ -13,6 +13,7 @@ import { MovieDetailsComponent } from './components/movies/movie-details/movie-d
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/account/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     MovieCardListComponent,
     HomeComponent,
     MovieDetailsComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
