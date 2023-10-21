@@ -25,6 +25,11 @@ export class AccountService {
     return this.http.post(`${this.url}/logout`,null)
   }
 
+  isAuthorized(): boolean {
+    return this.getToken() != null;
+   }
+   
+
   saveToken(token:string):void{
     // localStorage["token"]=token;
     localStorage.setItem("token",token);

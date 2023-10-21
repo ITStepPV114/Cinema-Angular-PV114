@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { ILoginRequest } from '../account';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,11 @@ export class LoginComponent {
   loginForm=this.fb.group({
     username:['',Validators.required],
     password:['',Validators.required]
-  })
-  constructor(private fb: FormBuilder,
-              private accountService:AccountService){
+  });
 
+  constructor(private fb: FormBuilder,
+              private accountService:AccountService,
+              private router:Router){
   }
   login():void{
     if(this.loginForm.invalid){
@@ -24,11 +26,22 @@ export class LoginComponent {
       return;
     }
     let dataRequest:ILoginRequest=this.loginForm.value as ILoginRequest;
-    this.accountService.login(dataRequest).subscribe(res=>{
+    // this.accountService.login(dataRequest).subscribe(res=>{
+    //   console.log(`Login! Token: ${res}`);
+    //   this.accountService.saveToken(res);
+    // },err=>{
+    //   console.warn(err);
+    // });
+
+
+    this.accountService.login(dataRequest).subscribe({
+      next: (res:string)=>{
       console.log(`Login! Token: ${res}`);
       this.accountService.saveToken(res);
-    },err=>{
+      this.router.navigateByUrl('/movies');
+      },
+      error: (err:any)=>{
       console.warn(err);
-    });
+    }});
   }
 }

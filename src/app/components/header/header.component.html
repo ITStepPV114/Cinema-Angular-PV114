@@ -13,12 +13,19 @@
     <button mat-icon-button routerLink="/add-movie">
         <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/user">
-        <mat-icon>account_circle</mat-icon>
-    </button>
-    <div>
-        <button mat-icon-button routerLink="/login">
-            <mat-icon>login</mat-icon>
-        </button>
+    <div class="account-side">
+         <div *ngIf="!accountService.isAuthorized()">
+             <button mat-icon-button routerLink="/register">
+                <mat-icon>account_circle</mat-icon>
+                     </button>
+                     <button mat-icon-button routerLink="/login">
+                <mat-icon>login</mat-icon>
+                     </button>
+         </div>
+        <div *ngIf="accountService.isAuthorized()">
+            <button mat-icon-button (click)="logout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
     </div>
 </mat-toolbar>
