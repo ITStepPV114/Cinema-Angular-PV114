@@ -15,12 +15,14 @@
     </button>
     <div class="account-side">
          <div *ngIf="!accountService.isAuthorized()">
-             <button mat-icon-button routerLink="/register">
+             <button mat-icon-button routerLink="/login">
                 <mat-icon>account_circle</mat-icon>
                      </button>
                      <button mat-icon-button routerLink="/login">
                 <mat-icon>login</mat-icon>
                      </button>
+                     
+                     
          </div>
         <div *ngIf="accountService.isAuthorized()">
             <button mat-icon-button (click)="logout()">

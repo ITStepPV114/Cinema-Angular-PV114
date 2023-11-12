@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { environment } from 'src/environments/environment';
-import { ILoginRequest } from './account';
+import { ILoginRequest, IRegistrationRequest } from './account';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,15 @@ export class AccountService {
     return this.http.post<string>(`${this.url}/login`,{
       username: data.username,
       password: data.password
+    });
+  }
+
+  registration(data:IRegistrationRequest):Observable<string>
+  {
+    return this.http.post<string>(`${this.url}/registration`,{
+      username: data.username,
+      password: data.password,
+      email : data.email
     });
   }
 

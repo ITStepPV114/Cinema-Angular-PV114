@@ -7,6 +7,7 @@ import { MovieDetailsComponent } from './components/movies/movie-details/movie-d
 import { AddMovieComponent } from './components/movies/add-movie/add-movie.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { AuthorizedGuard } from './authorized.guard';
+import { RegistrationComponent } from './components/account/registration/registration.component';
 
 const routes: Routes = [
   {path:"",component: HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:"movies", component: MovieCardListComponent,canActivate:[AuthorizedGuard]},
   {path:"movie-details/:id", component: MovieDetailsComponent},
   {path:"add-movie", component: AddMovieComponent, canActivate:[AuthorizedGuard]},
-  {path:"login", component: LoginComponent}
+  {path:"login", component: LoginComponent},
+  {path:"register", component: RegistrationComponent}
 ];
 
 @NgModule({

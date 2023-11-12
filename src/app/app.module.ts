@@ -15,6 +15,7 @@ import { AddMovieComponent } from './components/movies/add-movie/add-movie.compo
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/account/login/login.component';
 import { TokenInterceptor } from './token.interceptor';
+import { RegistrationComponent } from './components/account/registration/registration.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { TokenInterceptor } from './token.interceptor';
     HomeComponent,
     MovieDetailsComponent,
     AddMovieComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

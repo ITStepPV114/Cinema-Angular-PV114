@@ -1,9 +1,14 @@
-<p>login works!</p>
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form [formGroup]="loginForm" (ngSubmit)="register()">
      <div>
         <mat-form-field>
-            <mat-label>Enter username (email)</mat-label>
+            <mat-label>Enter username</mat-label>
             <input matInput  type="text" formControlName="username" required="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Enter email</mat-label>
+            <input matInput  type="text" formControlName="email" required="">
         </mat-form-field>
     </div>
     <div>
@@ -16,10 +21,7 @@
           </mat-form-field>
     </div>
     <div>
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <button type="submit" mat-raised-button color="primary">Register</button>
     </div>
     <br>
 </form>
-<div>
-    <button routerLink="/register" mat-raised-button color="primary">Register</button>
-</div>
