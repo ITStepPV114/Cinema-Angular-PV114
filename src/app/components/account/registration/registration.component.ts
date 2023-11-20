@@ -31,9 +31,15 @@ register():void{
 
   this.accountService.registration(dataRequest).subscribe({
     next: (res:string)=>{
+<<<<<<< HEAD
     console.log(`Login! Token: ${res}`);
     this.accountService.saveToken(res);
     this.router.navigateByUrl('/movies');
+=======
+    // console.log(`Login! Token: ${res}`);
+    this.accountService.saveToken(res);
+    this.router.navigateByUrl('/login');
+>>>>>>> 86288e0e17ae7a7bfb783fa7ebc9be0e4b27cac6
     },
     error: (err:any)=>{
     console.warn(err);

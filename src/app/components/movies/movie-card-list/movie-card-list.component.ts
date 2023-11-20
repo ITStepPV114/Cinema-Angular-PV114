@@ -27,8 +27,6 @@ export class MovieCardListComponent implements OnInit {
     this.movieService.getAll().subscribe(res=>{
         console.log(res);
        this.movies=res;
-    },error=>{
-      console.warn("Error!");
     });
   }
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { environment } from 'src/environments/environment';
-import { ILoginRequest } from './account';
+import { ILoginRequest, IRegistrationRequest } from './account';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,23 @@ export class AccountService {
     });
   }
 
+  registration(data:IRegistrationRequest):Observable<string>
+  {
+    return this.http.post<string>(`${this.url}/registration`,{
+      username: data.username,
+      password: data.password,
+      email : data.email
+    });
+  }
+
   logout():Observable<any>{
     return this.http.post(`${this.url}/logout`,null)
   }
+
+  isAuthorized(): boolean {
+    return this.getToken() != null;
+   }
+   
 
   saveToken(token:string):void{
     // localStorage["token"]=token;
