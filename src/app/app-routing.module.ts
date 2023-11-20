@@ -12,7 +12,7 @@ import { RegistrationComponent } from './components/account/registration/registr
 const routes: Routes = [
   {path:"",component: HomeComponent},
   // {path:"movies", component: MovieCardListComponent,canActivate:[AuthorizedGuard]},
-  {path:"movies", component: MovieCardListComponent,canActivate:[AuthorizedGuard]},
+  {path:"movies", component: MovieCardListComponent},
   {path:"movie-details/:id", component: MovieDetailsComponent},
   {path:"add-movie", component: AddMovieComponent, canActivate:[AuthorizedGuard]},
   {path:"login", component: LoginComponent},
