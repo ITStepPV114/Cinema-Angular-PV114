@@ -1,17 +1,6 @@
 
 
 <div class="text-center" >
-    <!-- example using formControl witout FormGroup -->
-    <!-- <form>
-        <mat-form-field>
-            <mat-label>Find</mat-label>
-            <input matInput type="text" [formControl]="findInfo">
-        </mat-form-field>
-        <div>
-            <button type="button" mat-raised-button color="primary" (click)="printInfo()">Find</button>
-        </div>    
-    </form> -->
-    <!-- <form [formGroup]="movieForm" #f="ngForm" (ngSubmit)="addMovieWithParam(f)"> -->
     <form [formGroup]="movieForm" #f="ngForm" (ngSubmit)="addMovie()">
         <div *ngIf="movieForm.get('title')?.invalid &&
                     (movieForm.get('title')?.dirty || movieForm.get('title')?.touched)">
@@ -47,9 +36,6 @@
                 <mat-label>Gengres</mat-label>
                 <mat-select multiple formControlName="genreIds">
                     <mat-option *ngFor="let g of genres" [value]="g.id">{{g.name}}</mat-option>
-                    <!-- <mat-option value="1">History</mat-option>
-                    <mat-option value="2">Action</mat-option>
-                    <mat-option value="3">Drama</mat-option> -->
                 </mat-select>
             </mat-form-field>
         </div>
